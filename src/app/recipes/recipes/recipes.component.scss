@@ -4,11 +4,13 @@
   .recipes-items {
     display: grid;
     grid-template-columns: 1fr;
+    grid-row-gap: 50px;
     .title {
       display: flex;
       justify-content: center;
       h1 {
         font-size: 45px;
+        color: rgb(235, 0, 0);
       }
     }
   }

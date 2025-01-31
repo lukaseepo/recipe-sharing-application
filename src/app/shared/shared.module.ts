@@ -14,7 +14,8 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
     CommonModule
   ],
   exports: [
-    CommonModule
+    CommonModule,
+    RecipeListComponent
   ]
 })
 export class SharedModule { }
