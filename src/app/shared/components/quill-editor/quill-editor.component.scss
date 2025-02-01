@@ -1,0 +1,83 @@
+@import "variables";
+
+quill-editor {
+  width: 100%;
+  height: 180px;
+  &.editor-invalid {
+    ::ng-deep {
+      .ql-container {
+        border: 1px solid red;
+      }
+      .ql-toolbar {
+        border: 1px solid red !important;
+      }
+    }
+  }
+
+  ::ng-deep .ql-container {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid $border-light;
+    background: white;
+    .ql-editor.ql-blank::before {
+      font-style: normal !important;
+    }
+    .ql-tooltip.ql-hidden {
+      display: none !important;
+    }
+    .ql-tooltip {
+      border-radius: 10px;
+      max-width: max-content;
+      width: 96%;
+      left: 15px !important;
+      display: flex;
+      input {
+        border-radius: 10px;
+        outline: none;
+        &::placeholder {
+          color: transparent;
+        }
+        @media screen and (max-width: 430px) {
+          width: 100%;
+        }
+      }
+      a {
+        text-decoration: none !important;
+      }
+    }
+  }
+
+  ::ng-deep .ql-toolbar {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid $border-light;
+    background: white;
+    .ql-formats {
+      button .ql-stroke {
+        stroke: $gray;
+        fill: none;
+      }
+      button:hover .ql-stroke,
+      .ql-picker-label:hover .ql-stroke {
+        fill: none;
+        stroke: black !important;
+      }
+
+      .ql-active .ql-stroke {
+        fill: none;
+        stroke: black !important;
+      }
+
+      button:hover .ql-fill,
+      .ql-picker-label:hover .ql-fill {
+        fill: black !important;
+        stroke: none;
+      }
+
+      .ql-active .ql-fill {
+        fill: black !important;
+        stroke: none;
+      }
+    }
+  }
+}

@@ -1,1 +1,111 @@
-<p>recipe-add works!</p>
+<section class="recipe-add-section">
+  <div class="container">
+    <div class="recipe-add-wrapper">
+      <div class="recipe-add-container">
+        <div class="recipe-add-items">
+          <div class="recipe-add-title">
+            <h3>რეცეპტი</h3>
+          </div>
+          <form class="form-wrapper" [formGroup]="recipeForm">
+            <div class="form-input-wrapper">
+              <input type="text" placeholder="რეცეპტის სახელი" formControlName="recipeTitle">
+              <ng-container *ngIf="recipeForm.get('recipeTitle')?.invalid && recipeForm.get('recipeTitle')?.touched">
+                <div class="error">
+                  <img src="/assets/icons/error.svg" alt="Error">
+                  <span>ჩაწერეთ რეცეპტის სახელი</span>
+                </div>
+              </ng-container>
+            </div>
+            <div class="form-input-wrapper">
+              <textarea placeholder="რეცეპტის აღწერა" formControlName="recipeDescription"></textarea>
+              <ng-container *ngIf="recipeForm.get('recipeDescription')?.invalid && recipeForm.get('recipeDescription')?.touched">
+                <div class="error">
+                  <img src="/assets/icons/error.svg" alt="Error">
+                  <span>ჩაწერეთ რეცეპტის აღწერა</span>
+                </div>
+              </ng-container>
+            </div>
+            <div class="ingredients-wrapper">
+              <h4>ინგრედიენტები</h4>
+              <div class="ingredients" formArrayName="recipeIngredients">
+                <div class="form-input-wrapper">
+                  <div class="ingredient-input-wrapper" *ngFor="let ingredient of recipeIngredients.controls; let i = index" [formGroupName]="i">
+                    <input
+                      type="text"
+                      [class.invalid-input]="recipeIngredientsInvalid && recipeIngredients.invalid"
+                      [formControlName]="'ingredient'"
+                      [placeholder]="i === 0 ? 'მაგ: 6 ცალი კვერცხი' : ''"
+                    >
+                    <div *ngIf="recipeIngredients.length > 1" (click)="deleteIngredient(i)" class="delete">
+                      <i class="pi pi-times"></i>
+                    </div>
+                  </div>
+                  <ng-container *ngIf="recipeIngredientsInvalid && recipeIngredients.invalid">
+                    <div class="error">
+                      <img src="/assets/icons/error.svg" alt="Error">
+                      <span>ჩაწერეთ ინგრედიენტი</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="add-ingredient">
+                <i class="pi pi-plus-circle"></i>
+                <h4 (click)="addIngredient()">ინგრედიენტის დამატება</h4>
+              </div>
+            </div>
+            <div class="instructions-wrapper">
+              <h4>მომზადების ეტაპები</h4>
+              <div class="instructions" formArrayName="recipeInstructions">
+                <div class="form-input-wrapper">
+                  <div class="instruction-input-wrapper" *ngFor="let instruction of recipeInstructions.controls; let i = index" [formGroupName]="i">
+                    <app-quill-editor [editorInvalid]="recipeInstructionsInvalid && recipeInstructions.invalid" [description]="i === 0 ? 'მაგ: წვრილად დაჭერით ხახვი' : ''" [formControlName]="'step'"></app-quill-editor>
+                    <div *ngIf="recipeInstructions.length > 1" (click)="deleteInstruction(i)" class="delete">
+                      <i class="pi pi-times"></i>
+                    </div>
+                  </div>
+                  <ng-container *ngIf="recipeInstructionsInvalid && recipeInstructions.invalid">
+                    <div class="error">
+                      <img src="/assets/icons/error.svg" alt="Error">
+                      <span>ჩაწერეთ მომზადების ეტაპი</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="add-instruction">
+                <i class="pi pi-plus-circle"></i>
+                <h4 (click)="addInstruction()">ეტაპის დამატება</h4>
+              </div>
+            </div>
+            <div class="recipe-image">
+              <div class="image-upload">
+                <h4 class="upload-title">სურათის დამატება</h4>
+                <div [class.invalid-image]="imageNotUploaded" [class.no-border]="imagePreview" class="upload-file" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+                  <input
+                    accept="image/*"
+                    class="file-upload-input"
+                    type="file"
+                    (change)="onFileSelected($event)"
+                    #fileInput
+                  />
+                  <ng-container *ngIf="!imagePreview">
+                    <i class="pi pi-upload"></i>
+                    <h4>ჩააგდეთ ფაილი აქ ან <span (click)="fileInput.click()">აირჩიეთ ფაილი</span></h4>
+                  </ng-container>
+                  <div class="image-preview" *ngIf="imagePreview">
+                    <img [src]="imagePreview" alt="Recipe preview">
+                    <div class="remove-image" (click)="removeImage()">
+                      <i class="pi pi-trash"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="submit-wrapper">
+              <button (click)="submitForm()" class="btn-primary"><h4>რეცეპტის დამატება</h4></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
