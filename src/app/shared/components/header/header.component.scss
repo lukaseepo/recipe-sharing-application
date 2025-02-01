@@ -1,0 +1,39 @@
+@import "variables";
+
+.header-section {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  height: 55px;
+  backdrop-filter: blur(8px);
+  background-color: #fffc;
+  box-shadow: 0 0 4px #0000001a;
+
+  .header-items {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+    column-gap: 30px;
+
+    a {
+      color: $light-black;
+      font-weight: bold;
+      font-size: 18px;
+      position: relative;
+      &.active-link {
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -18px;
+          width: 100%;
+          height: 4px;
+          background-color: $bold-orange;
+        }
+      }
+    }
+  }
+}

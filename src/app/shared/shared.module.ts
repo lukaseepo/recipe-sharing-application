@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { QuillEditorComponent } from './components/quill-editor/quill-editor.component';
 import {QuillModule} from 'ngx-quill';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -13,7 +14,8 @@ import {QuillModule} from 'ngx-quill';
   declarations: [
     RecipeListComponent,
     RecipeCardComponent,
-    QuillEditorComponent
+    QuillEditorComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,6 @@ import {QuillModule} from 'ngx-quill';
     QuillModule.forRoot({
       theme: 'snow',
       modules: {
-        toolbar: [['bold', { list: 'bullet' }]],
         clipboard: {
           matchVisual: false,
         },
@@ -34,7 +35,8 @@ import {QuillModule} from 'ngx-quill';
     RecipeListComponent,
     RouterModule,
     ReactiveFormsModule,
-    QuillEditorComponent
+    QuillEditorComponent,
+    HeaderComponent,
   ]
 })
 export class SharedModule { }
