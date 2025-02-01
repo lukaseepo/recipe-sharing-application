@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { QuillEditorComponent } from './components/quill-editor/quill-editor.component';
 import {QuillModule} from 'ngx-quill';
 import { HeaderComponent } from './components/header/header.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -37,6 +38,7 @@ import { HeaderComponent } from './components/header/header.component';
     ReactiveFormsModule,
     QuillEditorComponent,
     HeaderComponent,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

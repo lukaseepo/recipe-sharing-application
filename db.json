@@ -1,0 +1,53 @@
+{
+  "recipes": [
+    {
+      "id": "f8d2",
+      "recipeTitle": "მოცვისა და ბანანის კექსი",
+      "recipeDescription": "გემრიელი მოცვისა და ბანანის კექსი, რომლითაც პირს ჩაიტკბარუნებთ\n",
+      "recipeIngredients": [
+        {
+          "ingredient": "3 ცალი კვერცხი"
+        },
+        {
+          "ingredient": "150 გრამი კარაქი"
+        },
+        {
+          "ingredient": "6 გრამი გამაფხვიერებელი"
+        },
+        {
+          "ingredient": "მწიკვრი მარილი"
+        },
+        {
+          "ingredient": "გემოვნებით ბანანი"
+        },
+        {
+          "ingredient": "200 გრამი შაქარი"
+        },
+        {
+          "ingredient": "300 გრამი ფქვილი"
+        },
+        {
+          "ingredient": "5 გრამი ვანილი"
+        },
+        {
+          "ingredient": "გემოვნებით მოცვი"
+        }
+      ],
+      "recipeInstructions": [
+        {
+          "step": "<p>ჯამში&nbsp;მოათავსეთ&nbsp;<strong>კარაქი&nbsp;და&nbsp;შაქარი</strong>&nbsp;და&nbsp;კარგად&nbsp;დაამიქსერეთ.&nbsp;დაუმატეთ&nbsp;<strong>კვერცხი</strong>,&nbsp;<strong>გამაფხვიერებელი</strong>,&nbsp;<strong>ვანილი&nbsp;</strong>და&nbsp;<strong>მწიკვი&nbsp;მარილი</strong>.&nbsp;კარგად&nbsp;ამოიყვანეთ&nbsp;მიქსერის&nbsp;მეშვეობით.</p>"
+        },
+        {
+          "step": "<p>შემდეგ&nbsp;დაუმატეთ&nbsp;გაცრილი&nbsp;<strong>ფქვილი&nbsp;</strong>კარგად&nbsp;აურიეთ&nbsp;მიღებულ&nbsp;მასას&nbsp;დაუმატეთ&nbsp;დაჭრილი&nbsp;<strong>ბანანი&nbsp;</strong>და&nbsp;<strong>მოცვი</strong>.</p>"
+        },
+        {
+          "step": "<p>გადაიტანეთ&nbsp;საცხობ&nbsp;ფორმაზე&nbsp;და&nbsp;გამოაცხვეთ&nbsp;<strong>180&nbsp;გრადუსზე&nbsp;40&nbsp;წუთი</strong>&nbsp;და&nbsp;შემდეგ&nbsp;<strong>150&nbsp;გრადუსზე&nbsp;10-15&nbsp;წუთი</strong>.</p>"
+        },
+        {
+          "step": "<p>გემრიელად&nbsp;მიირთვით.</p>"
+        }
+      ],
+      "recipeImage": {}
+    }
+  ]
+}

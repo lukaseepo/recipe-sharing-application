@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {RecipesService} from '../recipes.service';
 
 @Component({
   selector: 'app-recipe-add',
@@ -14,7 +15,7 @@ export class RecipeAddComponent implements OnInit {
   public recipeIngredientsInvalid = false;
   public recipeInstructionsInvalid = false;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private recipeService: RecipesService) {
   }
 
   public get recipeIngredients(): FormArray {
@@ -142,8 +143,11 @@ export class RecipeAddComponent implements OnInit {
     if(this.recipeInstructions.invalid) {
       this.recipeInstructionsInvalid = true;
     }
+
     if(this.recipeForm.valid) {
-      console.log(this.recipeForm.value);
+      this.recipeService.addRecipe(this.recipeForm.value).subscribe((res) => {
+        console.log(res);
+      })
     }
   }
 
