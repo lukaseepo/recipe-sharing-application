@@ -1,14 +1,11 @@
 <section class="recipe-details-section">
   <div class="container">
     <div class="recipe-details-items">
-      <h3 class="recipe-title">სკუმბრია</h3>
+      <h3 class="recipe-title">{{recipe.recipeTitle}}</h3>
       <div class="recipe-wrapper">
-        <div class="recipe-image"></div>
+        <img [src]="recipe.recipeImage" class="recipe-image">
          <p class="description">
-           მწვანე ლობიო დავამტვრიოთ სასურველ ზომაზე, ჩავყაროთ ქვაბში, დავამატოთ კანგაცლილი და
-           დაჭრილი პომიდორი. ზეთში მოვხრაკოთ წვრილად დაჭრილი ხახვი და ნიორი, შევურიოთ
-           პომიდორი და ლობიო, მოვაყაროთ სუნელები, დავასხათ ბულიონი და წითელი ღვინო და
-           ყველაფერი ერთად ვშუშოთ ნელ ცეცხლზე 20-25 წთ.
+           {{recipe.recipeDescription}}
          </p>
       </div>
       <div class="recipe-items-wrapper">
@@ -17,14 +14,9 @@
             <h4>ინგრედიენტები</h4>
           </div>
           <ul class="ingredient-list">
-            <li>8 oz. thin rice noodles (such as banh pho)
+            <li *ngFor="let ingredient of recipe.recipeIngredients">
+              - {{ingredient.ingredient}}
             </li>
-            <li>Cilantro leaves with tender stems, Thai basil or mint leaves, mung bean sprouts, sliced jalapeño, hoisin sauce, sriracha, and lime wedges (for serving)
-            </li>
-            <li>6 Tbsp. (85 g) cold unsalted butter, cut into 4 pieces</li>
-            <li>6 Tbsp. (85 g) cold unsalted butter, cut into 4 pieces</li>
-            <li>6 Tbsp. (85 g) cold unsalted butter, cut into 4 pieces</li>
-            <li>6 Tbsp. (85 g) cold unsalted butter, cut into 4 pieces</li>
           </ul>
         </div>
         <div class="recipe-items">
@@ -32,16 +24,9 @@
             <h4>მომზადება</h4>
           </div>
           <ul class="instruction-steps">
-            <li class="step">
-              <h4>ეტაპი 1</h4>
-              <p>
-                Place 8 oz. thin rice noodles in a large bowl and pour in room-temperature water to cover; let soak until ready to use to rehydrate and soften.
-              </p>
-            </li>
-            <li class="step">
-              <h4>ეტაპი 2</h4>
-              <p>
-                Heat 1 Tbsp. vegetable oil in a medium Dutch oven or other heavy pot over medium-high. Cook 1 medium onion, thinly sliced, stirring occasionally, until just starting to soften, about 2 minutes. Add 1 lb. ground beef and 1 tsp. Diamond Crystal or ½ tsp. Morton kosher salt; cook, stirring and breaking up meat with a wooden spoon, until partially browned, about 2 minutes. Add 2 tsp. Chinese five-spice powder, season with freshly ground pepper, and continue to cook, stirring occasionally, until just cooked through, about 3 minutes. Pour off excess fat; discard.              </p>
+            <li class="step" *ngFor="let instruction of recipe.recipeInstructions; let i = index">
+              <h4>ეტაპი {{i + 1}}</h4>
+              <p [innerHTML]="instruction.step"></p>
             </li>
           </ul>
         </div>

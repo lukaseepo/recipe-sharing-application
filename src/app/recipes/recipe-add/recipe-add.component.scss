@@ -148,6 +148,7 @@
             border: 1px solid $border-light;
             color: $light-black;
             border-radius: 10px;
+            background: transparent;
           }
 
           textarea {
@@ -156,6 +157,7 @@
             border: 1px solid $border-light;
             color: $light-black;
             border-radius: 10px;
+            background: transparent;
             resize: none;
             height: 150px;
           }

@@ -1,6 +1,7 @@
 @import "variables";
 .recipe-card {
   width: 100%;
+  height: 320px;
   border: 1px solid #dfe7ef;
   border-radius: 15px;
   cursor: pointer;
@@ -9,16 +10,15 @@
   .image-wrapper {
     width: 100%;
     height: 245px;
-    background-size: cover;
+    object-fit: cover;
     background-position: center;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    background-repeat: no-repeat;
-    background-image: url("https://assets.epicurious.com/photos/678e76a9643646c90ace2219/1:1/w_1920,c_limit/passion%20fruit%2030.jpg");
   }
   .description {
     padding: 10px;
     display: flex;
+    height: 75px;
     flex-direction: column;
     row-gap: 5px;
     background: white;

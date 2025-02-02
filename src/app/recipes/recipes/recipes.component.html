@@ -3,9 +3,9 @@
     <div class="recipes-items">
       <div class="filter-wrapper">
          <div></div>
-         <button  routerLink="recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
+         <button matRipple  routerLink="recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
       </div>
-      <app-recipe-list></app-recipe-list>
+      <app-recipe-list [recipes]="recipes"></app-recipe-list>
     </div>
   </div>
 </section>

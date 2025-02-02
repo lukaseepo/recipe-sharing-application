@@ -2,8 +2,8 @@
 
 .recipe-details-section {
   width: 100%;
-  padding-top: 100px;
-
+  padding-top: 130px;
+  padding-bottom: 70px;
   .recipe-details-items {
     width: 100%;
     display: grid;
@@ -38,8 +38,14 @@
             display: flex;
             flex-direction: column;
             row-gap: 15px;
+            h4 {
+              font-size: 18px;
+              color: $light-black;
+            }
             p {
               line-height: 25px;
+              color: $light-black;
+              line-break: anywhere;
             }
           }
         }
@@ -53,6 +59,7 @@
           li {
             color: $light-black;
             line-height: 25px;
+            font-size: 18px;
           }
         }
 
@@ -82,9 +89,8 @@
       .recipe-image {
         height: 400px;
         max-width: 500px;
-        background-size: cover;
+        object-fit: cover;
         background-position: center center;
-        background-image: url("https://assets.epicurious.com/photos/678e76a9643646c90ace2219/1:1/w_1920,c_limit/passion%20fruit%2030.jpg");
       }
 
       .description {

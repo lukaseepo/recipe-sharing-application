@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {RecipesService} from '../recipes.service';
+import {Router} from '@angular/router';
+import {ToastService} from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-recipe-add',
@@ -15,7 +17,7 @@ export class RecipeAddComponent implements OnInit {
   public recipeIngredientsInvalid = false;
   public recipeInstructionsInvalid = false;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-  constructor(private fb: FormBuilder, private recipeService: RecipesService) {
+  constructor(private fb: FormBuilder, private router: Router, private recipeService: RecipesService, private toastService: ToastService) {
   }
 
   public get recipeIngredients(): FormArray {
@@ -81,15 +83,14 @@ export class RecipeAddComponent implements OnInit {
   private handleImageUpload(file: File): void {
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
-
       reader.onload = () => {
-        this.imagePreview = reader.result as string;
+        const base64String = reader.result as string;
+        this.imagePreview = base64String;
         this.imageNotUploaded = false;
         this.recipeForm.patchValue({
-          recipeImage: file
+          recipeImage: base64String
         });
       };
-
       reader.readAsDataURL(file);
     }
   }
@@ -143,10 +144,10 @@ export class RecipeAddComponent implements OnInit {
     if(this.recipeInstructions.invalid) {
       this.recipeInstructionsInvalid = true;
     }
-
+    this.toastService.showSuccess('რეცეპტი წარმატებით დაემატა');
     if(this.recipeForm.valid) {
-      this.recipeService.addRecipe(this.recipeForm.value).subscribe((res) => {
-        console.log(res);
+      this.recipeService.addRecipe(this.recipeForm.value).subscribe(() => {
+        this.router.navigate(['/recipes'])
       })
     }
   }

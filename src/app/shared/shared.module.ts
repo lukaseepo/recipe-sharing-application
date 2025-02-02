@@ -8,6 +8,9 @@ import { QuillEditorComponent } from './components/quill-editor/quill-editor.com
 import {QuillModule} from 'ngx-quill';
 import { HeaderComponent } from './components/header/header.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ToastModule} from 'primeng/toast';
+import {MessageModule} from 'primeng/message';
+import {MatRippleModule} from '@angular/material/core';
 
 
 
@@ -38,7 +41,9 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     QuillEditorComponent,
     HeaderComponent,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule,
+    MatRippleModule
   ]
 })
 export class SharedModule { }

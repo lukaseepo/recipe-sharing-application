@@ -1,5 +1,5 @@
 <div class="recipes-wrapper">
-  <app-recipe-card></app-recipe-card>
-  <app-recipe-card></app-recipe-card>
-  <app-recipe-card></app-recipe-card>
+  <ng-container *ngFor="let recipe of recipes">
+    <app-recipe-card [id]="recipe.id" [recipeTitle]="recipe.recipeTitle" [recipeDescription]="recipe.recipeDescription" [recipeImage]="recipe.recipeImage"></app-recipe-card>
+  </ng-container>
 </div>
