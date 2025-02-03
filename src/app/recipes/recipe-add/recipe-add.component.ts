@@ -1,23 +1,27 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RecipesService} from '../recipes.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ToastService} from '../../core/services/toast.service';
+import {UtilityService} from '../../core/services/utility.service';
+import {minOneFormGroupValidator} from '../../core/validators/minOneFormControlValue';
 
 @Component({
   selector: 'app-recipe-add',
   standalone: false,
   templateUrl: './recipe-add.component.html',
-  styleUrl: './recipe-add.component.scss'
+  styleUrl: './recipe-add.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeAddComponent implements OnInit {
   public recipeForm: FormGroup = new FormGroup({});
   public imagePreview: string | null = null;
+  public recipeId = '';
   public imageNotUploaded = false;
   public recipeIngredientsInvalid = false;
   public recipeInstructionsInvalid = false;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
-  constructor(private fb: FormBuilder, private router: Router, private recipeService: RecipesService, private toastService: ToastService) {
+  constructor(private fb: FormBuilder, private utilityService: UtilityService, private cdr: ChangeDetectorRef, private router: Router, private route: ActivatedRoute, private recipeService: RecipesService, private toastService: ToastService) {
   }
 
   public get recipeIngredients(): FormArray {
@@ -27,7 +31,6 @@ export class RecipeAddComponent implements OnInit {
   public get recipeInstructions(): FormArray {
     return this.recipeForm.get('recipeInstructions') as FormArray;
   }
-
 
   public addIngredient(): void {
     this.recipeIngredients.push(this.createIngredientFormGroup());
@@ -45,6 +48,33 @@ export class RecipeAddComponent implements OnInit {
   public createInstructionStepGroup(): FormGroup {
     return this.fb.group({
       step: ['']
+    });
+  }
+
+  public getRecipeByIdAndPatchValue(): void {
+    this.recipeService.getRecipeById(this.recipeId).subscribe((recipe) => {
+      this.recipeForm.patchValue({
+        recipeTitle: recipe.recipeTitle,
+        recipeDescription: recipe.recipeDescription,
+        recipeImage: recipe.recipeImage
+      });
+
+      this.imagePreview = recipe.recipeImage;
+
+      this.recipeIngredients.clear();
+      recipe.recipeIngredients.forEach(ingredient => {
+        this.recipeIngredients.push(this.fb.group({
+          ingredient: ingredient.ingredient
+        }));
+      });
+
+      this.recipeInstructions.clear();
+      recipe.recipeInstructions.forEach(instruction => {
+        this.recipeInstructions.push(this.fb.group({
+          step: instruction.step
+        }));
+      });
+      this.cdr.markForCheck();
     });
   }
 
@@ -110,31 +140,21 @@ export class RecipeAddComponent implements OnInit {
     this.recipeForm = this.fb.group({
       recipeTitle: ['', Validators.required],
       recipeDescription: ['', Validators.required],
-      recipeIngredients: this.fb.array([this.createIngredientFormGroup()], this.minOneFormGroupValidator()),
-      recipeInstructions: this.fb.array([this.createInstructionStepGroup()], this.minOneFormGroupValidator()),
+      recipeIngredients: this.fb.array([this.createIngredientFormGroup()], minOneFormGroupValidator()),
+      recipeInstructions: this.fb.array([this.createInstructionStepGroup()], minOneFormGroupValidator()),
       recipeImage: [null, Validators.required]
     });
-  }
 
-  private minOneFormGroupValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: boolean } | null => {
-      if (!(control instanceof FormArray)) {
-        return null;
-      }
+    this.recipeId = this.route.snapshot.params['id'];
 
-      const hasNonEmptyFormGroup = control.controls.some((formGroup: AbstractControl) => {
-        if (formGroup instanceof FormGroup) {
-          return Object.values(formGroup.controls).some(ctrl => !!ctrl.value);
-        }
-        return false;
-      });
-
-      return hasNonEmptyFormGroup ? null : { 'noNonEmptyFormGroup': true };
-    };
+    if(this.recipeId) {
+      this.getRecipeByIdAndPatchValue();
+    }
   }
 
   public submitForm() {
     this.recipeForm.markAllAsTouched();
+
     if(!this.imagePreview) {
       this.imageNotUploaded = true;
     }
@@ -144,11 +164,24 @@ export class RecipeAddComponent implements OnInit {
     if(this.recipeInstructions.invalid) {
       this.recipeInstructionsInvalid = true;
     }
-    this.toastService.showSuccess('რეცეპტი წარმატებით დაემატა');
+
+    const formValue = {...this.recipeForm.value};
+
+    formValue.recipeIngredients = this.utilityService.filterEmptyValues(formValue.recipeIngredients, 'ingredient');
+    formValue.recipeInstructions = this.utilityService.filterEmptyValues(formValue.recipeInstructions, 'step');
+
     if(this.recipeForm.valid) {
-      this.recipeService.addRecipe(this.recipeForm.value).subscribe(() => {
-        this.router.navigate(['/recipes'])
-      })
+      if(this.recipeId) {
+        this.recipeService.editRecipe(formValue, this.recipeId).subscribe((res) => {
+          this.router.navigate([`/recipes/recipe-details/${this.recipeId}`]);
+        })
+      } else {
+        this.recipeService.addRecipe(formValue).subscribe(() => {
+          this.router.navigate(['/recipes'])
+        })
+      }
+      this.cdr.markForCheck();
+      this.toastService.showSuccess(this.recipeId ? 'რეცეპტი წარმატებით დარედაქტირდა' : 'რეცეპტი წარმატებით დაემატა');
     }
   }
 

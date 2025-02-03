@@ -101,7 +101,10 @@
               </div>
             </div>
             <div class="submit-wrapper">
-              <button (click)="submitForm()" class="btn-primary"><h4>რეცეპტის დამატება</h4></button>
+              <button (click)="submitForm()" class="btn-primary">
+                <h4 *ngIf="!recipeId">რეცეპტის დამატება</h4>
+                <h4 *ngIf="recipeId">რეცეპტის რედაქტირება</h4>
+              </button>
             </div>
           </form>
         </div>

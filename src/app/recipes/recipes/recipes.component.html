@@ -2,8 +2,11 @@
   <div class="container">
     <div class="recipes-items">
       <div class="filter-wrapper">
-         <div></div>
-         <button matRipple  routerLink="recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
+         <div class="filters">
+           <input [(ngModel)]="recipeTitle" (ngModelChange)="recipeNameChange()" placeholder="რეცეპტის სახელი" type="text">
+           <p-multiselect [showToggleAll]="false" [filter]="false" [options]="cities" [(ngModel)]="selectedCities" optionLabel="name" placeholder="Select Cities"/>
+         </div>
+         <button matRipple routerLink="recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
       </div>
       <app-recipe-list [recipes]="recipes"></app-recipe-list>
     </div>

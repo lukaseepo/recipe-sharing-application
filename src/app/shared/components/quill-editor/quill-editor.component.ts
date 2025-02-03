@@ -1,10 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'app-quill-editor',
   standalone: false,
-
   templateUrl: './quill-editor.component.html',
   styleUrl: './quill-editor.component.scss',
   providers: [
@@ -14,6 +13,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuillEditorComponent {
   @Input() public description = '';

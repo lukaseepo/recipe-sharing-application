@@ -1,4 +1,49 @@
 @import "variables";
+
 .p-toast-detail {
   color: $light-black !important;
+  padding-left: 10px;
+}
+
+.p-toast-message-icon {
+  transform: translateY(4px);
+  .p-iconwrapper {
+    svg {
+      width: 30px;
+      height: 20px;
+    }
+  }
+}
+
+.p-multiselect-option:not(.p-multiselect-option-selected):not(.p-disabled).p-focus {
+  background: transparent !important;
+}
+
+.p-multiselect {
+  background: white !important;
+  border: 1px solid $border-light !important;
+  width: 250px !important;
+  border-radius: 10px !important;
+  transition: 0.3s;
+  .p-multiselect-label {
+    color: $light-black;
+  }
+  .p-checkbox-box {
+    background: white !important;
+    border: 1px solid $light-black !important;
+  }
+  .p-multiselect-overlay {
+    background: white;
+    border: 0;
+  }
+  .p-multiselect-option {
+    background: white;
+    span {
+      color: $light-black;
+    }
+  }
+  &:hover {
+    border-color: $bold-orange !important;
+    transition: 0.3s;
+  }
 }

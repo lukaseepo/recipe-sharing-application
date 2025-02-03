@@ -1,17 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
-import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RecipeListComponent} from './components/recipe-list/recipe-list.component';
+import {RecipeCardComponent} from './components/recipe-card/recipe-card.component';
+import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { QuillEditorComponent } from './components/quill-editor/quill-editor.component';
+import {QuillEditorComponent} from './components/quill-editor/quill-editor.component';
 import {QuillModule} from 'ngx-quill';
-import { HeaderComponent } from './components/header/header.component';
+import {HeaderComponent} from './components/header/header.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastModule} from 'primeng/toast';
-import {MessageModule} from 'primeng/message';
 import {MatRippleModule} from '@angular/material/core';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 
 @NgModule({
@@ -41,9 +41,13 @@ import {MatRippleModule} from '@angular/material/core';
     ReactiveFormsModule,
     QuillEditorComponent,
     HeaderComponent,
+    FormsModule,
+    MultiSelectModule,
     HttpClientModule,
     ToastModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDialogModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

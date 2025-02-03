@@ -40,13 +40,13 @@ body {
   margin: 0 auto;
 }
 
-.btn-primary {
+
+.btn-primary, .btn-secondary {
   padding: 10px 15px;
   display: flex;
   justify-content: center;
   background: transparent;
   align-items: center;
-  background: $bold-orange;
   cursor: pointer;
   border-radius: 10px;
   column-gap: 8px;
@@ -55,8 +55,27 @@ body {
     color: white;
   }
   h4 {
-    color: white;
     font-size: 15px;
+  }
+}
+
+.btn-secondary {
+  background-color: #e3e5ea;
+  transition: 0.3s;
+
+  &:hover {
+    transition: 0.3s;
+    background-color: #d6d8dd;
+  }
+  h4 {
+    color: $light-black;
+  }
+}
+
+.btn-primary {
+  background: $bold-orange;
+  h4 {
+    color: white;
   }
 }
 
@@ -101,5 +120,6 @@ textarea.ng-invalid.ng-touched {
     height: 12px;
   }
 }
+
 
 

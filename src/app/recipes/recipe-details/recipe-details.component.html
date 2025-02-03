@@ -1,7 +1,17 @@
-<section class="recipe-details-section">
+<section class="recipe-details-section" *ngIf="recipe">
   <div class="container">
     <div class="recipe-details-items">
-      <h3 class="recipe-title">{{recipe.recipeTitle}}</h3>
+      <div class="option-items">
+        <h3 class="recipe-title">{{recipe.recipeTitle}}</h3>
+        <div class="options">
+          <div class="option" routerLink="../../recipe-edit/{{recipe.id}}">
+            <i class="pi pi-pencil"></i>
+          </div>
+          <div class="option" (click)="openDeleteConfirmationDialog(deleteConfirmation)">
+            <i class="pi pi-trash"></i>
+          </div>
+        </div>
+      </div>
       <div class="recipe-wrapper">
         <img [src]="recipe.recipeImage" class="recipe-image">
          <p class="description">
@@ -34,3 +44,15 @@
     </div>
   </div>
 </section>
+<ng-template #deleteConfirmation>
+  <div class="delete-confirmation">
+    <div class="confirmation-title">
+      <i class="pi pi-exclamation-circle"></i>
+      <p class="title">დარწმუნებული ხართ რომ გსურთ რეცეპტის წაშლა?</p>
+    </div>
+    <div class="button-wrapper">
+      <button class="btn-secondary" mat-dialog-close matRipple><h4>გაუქმება</h4></button>
+      <button class="btn-primary" matRipple mat-dialog-close (click)="deleteRecipe()"><h4>წაშლა</h4></button>
+    </div>
+  </div>
+</ng-template>

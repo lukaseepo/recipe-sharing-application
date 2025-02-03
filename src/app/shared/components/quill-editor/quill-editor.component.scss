@@ -19,6 +19,11 @@ quill-editor {
     border-bottom-right-radius: 10px;
     border: 1px solid $border-light;
     background: white;
+    .ql-editor {
+      p {
+        color: $light-black;
+      }
+    }
     .ql-editor.ql-blank::before {
       font-style: normal !important;
     }
