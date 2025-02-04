@@ -1,4 +1,4 @@
-<div class="recipe-card" routerLink="recipe-details/{{id}}">
+<div class="recipe-card" routerLink="/recipes/recipe-details/{{id}}">
   <div class="favorite" *ngIf="!favorite" (click)="addToFavorites(id); $event.stopPropagation()">
     <i class="pi pi-heart"></i>
   </div>

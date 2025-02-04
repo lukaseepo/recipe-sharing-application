@@ -24,6 +24,7 @@
       color: $light-black;
       &.fav {
         color: $bold-orange;
+        animation: favanimation 0.3s ease-in-out;
       }
     }
   }
@@ -54,5 +55,17 @@
       color: $light-black;
       font-size: 15px;
     }
+  }
+}
+
+@keyframes favanimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

@@ -2,7 +2,7 @@
 
 .recipe-details-section {
   width: 100%;
-  padding-top: 130px;
+  padding-top: 100px;
   padding-bottom: 70px;
   .recipe-details-items {
     width: 100%;
@@ -21,19 +21,20 @@
         .option {
           width: 40px;
           height: 40px;
-          border-radius: 10px;
-          border: 1px solid $light-black;
+          border-radius: 50%;
           display: flex;
+          background: white;
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1019607843);
           align-items: center;
           cursor: pointer;
           justify-content: center;
-          &:hover {
-            background: $bright-white;
-            border: 1px solid $bold-orange;
-          }
+
           i {
             font-size: 18px;
-            color: $light-black;
+            color: $bold-orange;
+            &.fav {
+              animation: favanimation 0.3s ease-in-out;
+            }
           }
         }
       }
@@ -168,5 +169,17 @@
       padding-left: 25px;
       padding-right: 25px;
     }
+  }
+}
+
+@keyframes favanimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

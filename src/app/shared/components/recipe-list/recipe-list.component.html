@@ -1,26 +1,43 @@
 <section class="recipes-section">
   <div class="container">
-    <div class="alert-wrapper" *ngIf="!recipes.length">
-      <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
-      <h3>თქვენ არ გაქვთ ფავორიტი რეცეპტები</h3>
-    </div>
-    <div class="recipes-items" *ngIf="recipes.length">
+    <div class="recipes-items">
       <app-filter
+        [favorite]="onFavoritePage"
         [recipes]="recipes"
         [allRecipes]="allRecipes"
         [recipeIngredients]="recipeIngredients"
-        (recipesChange)="recipes = $event">
+        (recipesChange)="recipes = $event; recipesFiltered = true">
       </app-filter>
       <div class="recipes-wrapper">
-        <ng-container *ngFor="let recipe of recipes">
-          <app-recipe-card
-            [id]="recipe.id"
-            [recipeTitle]="recipe.recipeTitle"
-            [recipeDescription]="recipe.recipeDescription"
-            [recipeImage]="recipe.recipeImage" [favorite]="recipe.favorite" (addToFavorite)="addToFavorites($event, recipe)" (removeFromFavorite)="removeFromFavorites($event, recipe)">
-          </app-recipe-card>
-        </ng-container>
+         <app-recipe-card
+           *ngFor="let recipe of recipes"
+           [id]="recipe.id"
+           [recipeTitle]="recipe.recipeTitle"
+           [recipeDescription]="recipe.recipeDescription"
+           [recipeImage]="recipe.recipeImage" [favorite]="recipe.favorite" (addToFavorite)="addToFavorites($event, recipe)" (removeFromFavorite)="removeFromFavorites($event, recipe)">
+         </app-recipe-card>
       </div>
     </div>
   </div>
 </section>
+
+<ng-container *ngIf="allRecipes">
+  <div class="alert-wrapper" *ngIf="!allRecipes.length && onFavoritePage">
+    <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
+    <h3>თქვენ არ გაქვთ ფავორიტი რეცეპტები</h3>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="recipes">
+  <div class="alert-wrapper" *ngIf="!recipes.length && recipesFiltered">
+    <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
+    <h3>რეცეპტი ვერ მოიძებნა</h3>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="allRecipes">
+  <div class="alert-wrapper" *ngIf="!allRecipes.length && !onFavoritePage">
+    <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
+    <h3>თქვენ არ გაქვთ რეცეპტები</h3>
+  </div>
+</ng-container>

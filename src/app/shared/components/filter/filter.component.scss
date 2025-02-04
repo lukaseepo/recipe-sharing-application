@@ -4,10 +4,25 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  row-gap: 10px;
+  @media (max-width: 1205px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20px;
+  }
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
   .filters {
     display: flex;
     align-items: center;
     column-gap: 15px;
+    row-gap: 10px;
+    @media (max-width: 780px) {
+      flex-direction: column;
+      input {
+        width: 100% !important;
+      }
+    }
     input {
       padding: 10px 15px;
       background: white;

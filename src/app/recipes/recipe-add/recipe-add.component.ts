@@ -166,7 +166,8 @@ export class RecipeAddComponent implements OnInit {
     }
 
     const formValue = {...this.recipeForm.value};
-
+    formValue.recipeTitle = formValue.recipeTitle.trim();
+    formValue.recipeDescription = formValue.recipeDescription.trim();
     formValue.recipeIngredients = this.utilityService.filterEmptyValues(formValue.recipeIngredients, 'ingredient');
     formValue.recipeInstructions = this.utilityService.filterEmptyValues(formValue.recipeInstructions, 'step');
 

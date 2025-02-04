@@ -21,6 +21,20 @@ export class RecipeDetailsComponent implements OnInit {
    this.getRecipeById();
   }
 
+  public addToFavorites() {
+    this.recipeService.editRecipe({...this.recipe, favorite: true}, this.recipe.id).subscribe(() => {
+      this.recipe.favorite = true;
+      this.cdr.markForCheck();
+    })
+  }
+
+  public removeFromFavorites() {
+    this.recipeService.editRecipe({...this.recipe, favorite: false}, this.recipe.id).subscribe(() => {
+      this.recipe.favorite = false;
+      this.cdr.markForCheck();
+    })
+  }
+
   public getRecipeById() {
     this.recipeService.getRecipeById(this.route.snapshot.params['id']).subscribe((res) => {
       this.recipe = res;

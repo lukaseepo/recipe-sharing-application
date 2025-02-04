@@ -13,6 +13,8 @@ export class RecipeListComponent {
   @Input() public recipes!: Recipe[];
   @Input() public allRecipes!: Recipe[];
   @Input() public recipeIngredients: { name: string }[] = [];
+  @Input() public onFavoritePage = false;
+  public recipesFiltered = false;
 
   constructor(private recipeService: RecipesService, private cdr: ChangeDetectorRef ) {
   }
@@ -28,4 +30,5 @@ export class RecipeListComponent {
       this.cdr.markForCheck();
     })
   }
+
 }

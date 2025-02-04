@@ -13,9 +13,12 @@ export class FilterComponent {
   @Input() public recipes!: Recipe[];
   @Input() public allRecipes!: Recipe[];
   @Input() public recipeIngredients: { name: string }[] = [];
+  @Input() public favorite = false;
   @Output() public recipesChange = new EventEmitter<Recipe[]>();
+
   public recipeTitle = '';
   public selectedRecipeIngredients: any[] = [];
+
 
 
   public filterRecipes(): void {
@@ -36,8 +39,6 @@ export class FilterComponent {
 
       return titleMatch && ingredientMatch;
     });
-    console.log(this.recipes);
-    console.log(this.allRecipes);
     this.recipesChange.emit(this.recipes);
   }
 }

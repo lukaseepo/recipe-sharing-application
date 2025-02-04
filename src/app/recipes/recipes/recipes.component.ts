@@ -11,6 +11,7 @@ import {Recipe} from '../../shared/models/recipe';
 })
 export class RecipesComponent implements OnInit {
   public recipes!: Recipe[];
+  public allRecipes!: Recipe[];
   public recipeIngredients: { name: string }[] = [];
   public constructor(private recipeService: RecipesService, private cdr: ChangeDetectorRef) {
 
@@ -34,6 +35,7 @@ export class RecipesComponent implements OnInit {
   public getRecipes() {
     this.recipeService.getRecipes().subscribe((res) => {
       this.recipes = res;
+      this.allRecipes = res;
       this.extractUniqueIngredients(res);
       this.cdr.markForCheck();
     })

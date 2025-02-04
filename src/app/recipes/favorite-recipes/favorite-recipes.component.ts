@@ -12,6 +12,7 @@ import {Recipe} from '../../shared/models/recipe';
 })
 export class FavoriteRecipesComponent implements OnInit {
   public recipes!: Recipe[];
+  public allRecipes!: Recipe[];
   @Input() public recipeIngredients: { name: string }[] = [];
   public constructor(private cdr: ChangeDetectorRef, private recipeService: RecipesService) {
   }
@@ -33,7 +34,8 @@ export class FavoriteRecipesComponent implements OnInit {
   public getRecipes() {
     this.recipeService.getRecipes().subscribe((res) => {
       this.recipes = res.filter((recipe) => recipe.favorite);
-      this.extractUniqueIngredients(res);
+      this.allRecipes = [...this.recipes];
+      this.extractUniqueIngredients(this.recipes);
       this.cdr.markForCheck();
     })
   }

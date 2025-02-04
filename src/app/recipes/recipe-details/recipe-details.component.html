@@ -4,6 +4,12 @@
       <div class="option-items">
         <h3 class="recipe-title">{{recipe.recipeTitle}}</h3>
         <div class="options">
+          <div class="option" (click)="addToFavorites()" *ngIf="!recipe.favorite">
+            <i class="pi pi-heart"></i>
+          </div>
+          <div class="option" (click)="removeFromFavorites()" *ngIf="recipe.favorite">
+            <i class="pi pi-heart-fill fav"></i>
+          </div>
           <div class="option" routerLink="../../recipe-edit/{{recipe.id}}">
             <i class="pi pi-pencil"></i>
           </div>
