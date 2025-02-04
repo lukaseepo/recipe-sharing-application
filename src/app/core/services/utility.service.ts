@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UtilityService {
-
   constructor() { }
 
   public filterEmptyValues(array: any[], key: string): any[] {

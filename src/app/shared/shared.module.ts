@@ -12,6 +12,7 @@ import {ToastModule} from 'primeng/toast';
 import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 @NgModule({
@@ -19,12 +20,16 @@ import {MultiSelectModule} from 'primeng/multiselect';
     RecipeListComponent,
     RecipeCardComponent,
     QuillEditorComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    MultiSelectModule,
+    MatRippleModule,
+    ReactiveFormsModule,
     QuillModule.forRoot({
       theme: 'snow',
       modules: {

@@ -1,0 +1,13 @@
+<div class="filter-wrapper">
+  <div class="filters">
+    <input [(ngModel)]="recipeTitle" (ngModelChange)="filterRecipes()" placeholder="რეცეპტის სახელი" type="text">
+    <p-multiSelect [showToggleAll]="false"
+                   [filter]="false"
+                   [options]="recipeIngredients"
+                   [(ngModel)]="selectedRecipeIngredients"
+                   (ngModelChange)="filterRecipes()"
+                   optionLabel="name"
+                   placeholder="აირჩიეთ ინგრედიენტები"/>
+  </div>
+  <button matRipple routerLink="/recipes/recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
+</div>

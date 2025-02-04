@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeAddComponent } from './recipe-add/recipe-add.component';
-import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {RecipesComponent} from './recipes/recipes.component';
+import {RecipeAddComponent} from './recipe-add/recipe-add.component';
+import {RecipeDetailsComponent} from './recipe-details/recipe-details.component';
+import {FavoriteRecipesComponent} from './favorite-recipes/favorite-recipes.component';
 
 const routes: Routes = [{
   path: '',
@@ -10,6 +11,9 @@ const routes: Routes = [{
 }, {
   path: 'recipe-add',
   component: RecipeAddComponent,
+}, {
+  path: 'favorite-recipes',
+  component: FavoriteRecipesComponent,
 }, {
   path: 'recipe-edit/:id',
   component: RecipeAddComponent,
@@ -22,4 +26,5 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RecipesRoutingModule { }
+export class RecipesRoutingModule {
+}

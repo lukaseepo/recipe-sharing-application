@@ -1,4 +1,10 @@
 <div class="recipe-card" routerLink="recipe-details/{{id}}">
+  <div class="favorite" *ngIf="!favorite" (click)="addToFavorites(id); $event.stopPropagation()">
+    <i class="pi pi-heart"></i>
+  </div>
+  <div class="favorite" *ngIf="favorite" (click)="removeFromFavorites(id); $event.stopPropagation()">
+    <i class="pi pi-heart-fill fav"></i>
+  </div>
   <img [src]="recipeImage" class="image-wrapper">
   <div class="description">
     <div class="recipe-title">

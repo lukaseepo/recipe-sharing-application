@@ -1,5 +1,26 @@
-<div class="recipes-wrapper">
-  <ng-container *ngFor="let recipe of recipes">
-    <app-recipe-card [id]="recipe.id" [recipeTitle]="recipe.recipeTitle" [recipeDescription]="recipe.recipeDescription" [recipeImage]="recipe.recipeImage"></app-recipe-card>
-  </ng-container>
-</div>
+<section class="recipes-section">
+  <div class="container">
+    <div class="alert-wrapper" *ngIf="!recipes.length">
+      <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
+      <h3>თქვენ არ გაქვთ ფავორიტი რეცეპტები</h3>
+    </div>
+    <div class="recipes-items" *ngIf="recipes.length">
+      <app-filter
+        [recipes]="recipes"
+        [allRecipes]="allRecipes"
+        [recipeIngredients]="recipeIngredients"
+        (recipesChange)="recipes = $event">
+      </app-filter>
+      <div class="recipes-wrapper">
+        <ng-container *ngFor="let recipe of recipes">
+          <app-recipe-card
+            [id]="recipe.id"
+            [recipeTitle]="recipe.recipeTitle"
+            [recipeDescription]="recipe.recipeDescription"
+            [recipeImage]="recipe.recipeImage" [favorite]="recipe.favorite" (addToFavorite)="addToFavorites($event, recipe)" (removeFromFavorite)="removeFromFavorites($event, recipe)">
+          </app-recipe-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

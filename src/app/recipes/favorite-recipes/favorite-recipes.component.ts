@@ -1,19 +1,19 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {RecipesService} from '../recipes.service';
 import {Recipe} from '../../shared/models/recipe';
 
 @Component({
-  selector: 'app-recipes',
+  selector: 'app-favorite-recipes',
   standalone: false,
-  templateUrl: './recipes.component.html',
-  styleUrl: './recipes.component.scss',
+
+  templateUrl: './favorite-recipes.component.html',
+  styleUrl: './favorite-recipes.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecipesComponent implements OnInit {
+export class FavoriteRecipesComponent implements OnInit {
   public recipes!: Recipe[];
-  public recipeIngredients: { name: string }[] = [];
-  public constructor(private recipeService: RecipesService, private cdr: ChangeDetectorRef) {
-
+  @Input() public recipeIngredients: { name: string }[] = [];
+  public constructor(private cdr: ChangeDetectorRef, private recipeService: RecipesService) {
   }
 
   public ngOnInit() {
@@ -30,10 +30,9 @@ export class RecipesComponent implements OnInit {
       .map(ingredient => ({ name: ingredient }));
   }
 
-
   public getRecipes() {
     this.recipeService.getRecipes().subscribe((res) => {
-      this.recipes = res;
+      this.recipes = res.filter((recipe) => recipe.favorite);
       this.extractUniqueIngredients(res);
       this.cdr.markForCheck();
     })

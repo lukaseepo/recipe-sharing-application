@@ -2,10 +2,31 @@
 .recipe-card {
   width: 100%;
   height: 320px;
+  position: relative;
   border-radius: 15px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  .favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1019607843);
+    top: 15px;
+    right: 15px;
+    i {
+      font-size: 15px;
+      color: $light-black;
+      &.fav {
+        color: $bold-orange;
+      }
+    }
+  }
   .image-wrapper {
     width: 100%;
     height: 245px;

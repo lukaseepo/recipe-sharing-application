@@ -25,6 +25,20 @@ body {
   background-color: $light-gray;
 }
 
+::-webkit-scrollbar {
+  overflow: visible;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 4px;
+  background-color: #dadce0;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
 * {
   padding: 0;
   margin: 0;

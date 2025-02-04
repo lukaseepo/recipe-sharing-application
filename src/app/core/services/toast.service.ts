@@ -14,12 +14,4 @@ export class ToastService {
       detail: detail || message,
     });
   }
-
-  public showError(message: string, detail?: string): void {
-    this.messageService.add({
-      severity: 'error',
-      // summary: 'Error',
-      detail: detail || message,
-    });
-  }
 }

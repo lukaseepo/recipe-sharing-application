@@ -15,35 +15,52 @@
   }
 }
 
-.p-multiselect-option:not(.p-multiselect-option-selected):not(.p-disabled).p-focus {
-  background: transparent !important;
-}
-
 .p-multiselect {
   background: white !important;
   border: 1px solid $border-light !important;
   width: 250px !important;
   border-radius: 10px !important;
   transition: 0.3s;
+  .p-multiselect-option:not(.p-multiselect-option-selected):not(.p-disabled).p-focus {
+    background: #e9ecef !important;
+  }
+
+  .p-multiselect-option {
+    span {
+      font-size: 14px;
+    }
+  }
+
   .p-multiselect-label {
     color: $light-black;
+    &.p-placeholder {
+      font-size: 14px;
+      color: $gray;
+    }
+  }
+  .p-checkbox-checked {
+    &.p-checkbox {
+      .p-checkbox-box {
+        background: $bold-orange !important;
+        border: 0 !important;
+      }
+    }
   }
   .p-checkbox-box {
     background: white !important;
-    border: 1px solid $light-black !important;
+    border: 2px solid #ced4da !important;
   }
   .p-multiselect-overlay {
     background: white;
     border: 0;
+  }
+  .p-checkbox-icon {
+    color: white !important;
   }
   .p-multiselect-option {
     background: white;
     span {
       color: $light-black;
     }
-  }
-  &:hover {
-    border-color: $bold-orange !important;
-    transition: 0.3s;
   }
 }

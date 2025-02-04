@@ -1,10 +1,10 @@
 <header class="header-section">
   <div class="container">
     <div class="header-items">
-      <a routerLinkActive="active-link"  routerLink="/recipes">
+      <a routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"  routerLink="/recipes">
         რეცეპტები
       </a>
-      <a routerLinkActive="active-link" routerLink="/favorite-recipes">
+      <a routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" routerLink="/recipes/favorite-recipes">
         ფავორიტები
       </a>
     </div>

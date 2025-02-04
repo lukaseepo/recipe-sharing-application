@@ -1,0 +1,31 @@
+@import "variables";
+
+.filter-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  .filters {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    input {
+      padding: 10px 15px;
+      background: white;
+      width: 250px;
+      border: 1px solid $border-light;
+      border-radius: 10px;
+      transition: 0.3s;
+      color: $light-black;
+      &::placeholder {
+        font-size: 14px;
+      }
+      &:focus {
+        border-color: $bold-orange;
+      }
+      &:hover {
+        border-color: $bold-orange;
+        transition: 0.3s;
+      }
+    }
+  }
+}
