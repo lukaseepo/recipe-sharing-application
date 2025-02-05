@@ -35,7 +35,7 @@ The Recipe Sharing Application is a platform where users can post, view, edit, a
 
 ### 6. Favorites (Bonus Feature)
 - Users can mark recipes as **favorites**.
-- Ability to filter recipes to display only favorite ones.
+- filter their favorite recipes.
 
 ## Technical Details
 
