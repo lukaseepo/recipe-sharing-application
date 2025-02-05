@@ -1,0 +1,23 @@
+@import "variables";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 140px;
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  h3 {
+    font-size: 16px;
+    color: $light-black;
+    a {
+      color: $bold-orange;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

@@ -9,5 +9,7 @@
                    optionLabel="name"
                    placeholder="აირჩიეთ ინგრედიენტები"/>
   </div>
-  <button *ngIf="!favorite" matRipple routerLink="/recipes/recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
+  <div class="button-wrapper" *ngIf="!favorite">
+    <button  matRipple routerLink="/recipes/recipe-add" class="btn-primary"><i class="pi pi-plus"></i><h4>რეცეპტის დამატება</h4></button>
+  </div>
 </div>

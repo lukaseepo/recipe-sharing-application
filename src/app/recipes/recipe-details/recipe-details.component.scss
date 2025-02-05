@@ -4,20 +4,38 @@
   width: 100%;
   padding-top: 100px;
   padding-bottom: 70px;
+  @media (max-width: 780px) {
+    padding-top: 90px !important;
+  }
   .recipe-details-items {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
     grid-row-gap: 35px;
+    @media (max-width: 1225px) {
+      padding: 0 25px;
+    }
+    @media (max-width: 780px) {
+      grid-row-gap: 20px;
+    }
     .option-items {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      column-gap: 25px;
+      row-gap: 10px;
+      @media (max-width: 780px) {
+        flex-direction: column-reverse;
+        align-items: normal;
+      }
       .options {
         display: flex;
         column-gap: 15px;
+        @media (max-width: 780px) {
+          column-gap: 10px;
+        }
         .option {
           width: 40px;
           height: 40px;
@@ -41,6 +59,9 @@
       .recipe-title {
         font-size: 40px;
         color: $bold-orange;
+        @media (max-width: 780px) {
+          font-size: 35px;
+        }
       }
     }
     .recipe-items-wrapper {
@@ -49,7 +70,11 @@
       display: grid;
       column-gap: 140px;
       grid-template-columns: 0.8fr 2fr;
-
+      row-gap: 50px;
+      @media (max-width: 780px) {
+        grid-template-columns: 1fr;
+        padding-bottom: 20px;
+      }
       .recipe-items {
         display: flex;
         flex-direction: column;
@@ -86,7 +111,7 @@
           li {
             color: $light-black;
             line-height: 25px;
-            font-size: 18px;
+            font-size: 16px;
           }
         }
 
@@ -112,6 +137,12 @@
       grid-template-columns: 0.8fr 1fr;
       row-gap: 10px;
       grid-column-gap: 10px;
+      @media (max-width: 780px) {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+        padding-bottom: 20px;
+        border-width: 2px;
+      }
 
       .recipe-image {
         height: 400px;
@@ -119,6 +150,9 @@
         width: 100%;
         object-fit: cover;
         background-position: center center;
+        @media (max-width: 780px) {
+          max-width: 100%;
+        }
       }
 
       .description {

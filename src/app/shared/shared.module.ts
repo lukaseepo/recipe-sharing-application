@@ -13,6 +13,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { FilterComponent } from './components/filter/filter.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { FilterComponent } from './components/filter/filter.component';
     QuillEditorComponent,
     HeaderComponent,
     FilterComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

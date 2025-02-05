@@ -4,6 +4,9 @@
 .recipes-section {
   width: 100%;
   padding-top: 90px;
+  @media (max-width: 780px) {
+    padding-top: 70px;
+  }
   .recipes-items {
     display: grid;
     grid-template-columns: 1fr;
@@ -13,9 +16,13 @@
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 30px;
       grid-row-gap: 30px;
+      padding-bottom: 20px !important;
       @media (max-width: 1205px) {
         grid-template-columns: 1fr 1fr;
         padding: 0 20px;
+      }
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
       }
     }
   }

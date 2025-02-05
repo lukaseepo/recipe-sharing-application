@@ -10,8 +10,8 @@ import {RecipesService} from '../../../recipes/recipes.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeListComponent {
-  @Input() public recipes!: Recipe[];
-  @Input() public allRecipes!: Recipe[];
+  @Input() public recipes: Recipe[] = [];
+  @Input() public allRecipes: Recipe[] = [];
   @Input() public recipeIngredients: { name: string }[] = [];
   @Input() public onFavoritePage = false;
   public recipesFiltered = false;

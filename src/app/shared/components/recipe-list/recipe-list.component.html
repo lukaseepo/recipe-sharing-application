@@ -21,22 +21,22 @@
   </div>
 </section>
 
-<ng-container *ngIf="allRecipes">
-  <div class="alert-wrapper" *ngIf="!allRecipes.length && onFavoritePage">
+<ng-container *ngIf="!allRecipes.length && onFavoritePage">
+  <div class="alert-wrapper">
     <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
     <h3>თქვენ არ გაქვთ ფავორიტი რეცეპტები</h3>
   </div>
 </ng-container>
 
-<ng-container *ngIf="recipes">
-  <div class="alert-wrapper" *ngIf="!recipes.length && recipesFiltered">
+<ng-container *ngIf="!recipes.length && recipesFiltered">
+  <div class="alert-wrapper">
     <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
     <h3>რეცეპტი ვერ მოიძებნა</h3>
   </div>
 </ng-container>
 
-<ng-container *ngIf="allRecipes">
-  <div class="alert-wrapper" *ngIf="!allRecipes.length && !onFavoritePage">
+<ng-container *ngIf="!allRecipes.length && !onFavoritePage">
+  <div class="alert-wrapper">
     <img src="/assets/images/hand-drawn-chef-drawing-illustration.png" alt="">
     <h3>თქვენ არ გაქვთ რეცეპტები</h3>
   </div>

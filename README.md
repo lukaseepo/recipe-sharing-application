@@ -1,59 +1,108 @@
-# RecipeSharingApp
+# Recipe Sharing Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+## Overview
+The Recipe Sharing Application is a platform where users can post, view, edit, and delete recipes. It showcases Angular fundamentals such as components, services, routing, and forms while integrating Angular Material and PrimeNG for UI enhancements. To optimize performance, the application uses Angular's `ChangeDetectionStrategy.OnPush`. Additionally, the form retains data on page refresh using local storage.
 
-## Development server
+## Features
 
-To start a local development server, run:
+### 1. Recipe Display
+- A home page displays a list of recipes with a title, short description, and a thumbnail image.
+- Users can navigate to a recipe detail page to view the full recipe, including ingredients and cooking instructions.
 
-```bash
-ng serve
-```
+### 2. Adding Recipes
+- Users can submit new recipes through a form with fields for:
+  - Title
+  - Description
+  - Ingredients
+  - Instructions
+  - Thumbnail image upload
+- Utilizes **Angular Reactive Forms** for handling and validation.
+- Data persists even after a page refresh via **local storage**.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 3. Editing and Deleting Recipes
+- Users can edit their posted recipes.
+- Users can delete their recipes.
 
-## Code scaffolding
+### 4. Search Functionality
+- A search bar enables filtering recipes by **title** or **ingredients**.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 5. Routing
+- **Angular Router** is used to navigate between pages:
+  - Home (Recipe List)
+  - Recipe Detail
+  - Recipe Submission Form
+- Includes a **404 Not Found** page for unmatched routes.
 
-```bash
-ng generate component component-name
-```
+### 6. Favorites (Bonus Feature)
+- Users can mark recipes as **favorites**.
+- Ability to filter recipes to display only favorite ones.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Technical Details
 
-```bash
-ng generate --help
-```
+### 1. Components
+- **Recipe List Component**: Displays all recipes.
+- **Recipe Detail Component**: Shows full recipe details.
+- **Recipe Form Component**: Manages recipe creation and editing.
+- **Search Component**: Implements search functionality.
 
-## Building
+### 2. Services
+- A **Recipe Service** handles CRUD operations:
+  - Fetching recipes
+  - Adding recipes
+  - Editing recipes
+  - Deleting recipes
+  - Managing favorites
 
-To build the project run:
+### 3. Mock Backend
+- Uses `json-server` to simulate a backend data store.
 
-```bash
-ng build
-```
+### 4. UI Frameworks
+- **Angular Material**: Enhances form fields, buttons, and layout.
+- **PrimeNG**: Provides UI components such as tables, dialogs, and notifications.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### 5. Change Detection Strategy
+- **ChangeDetectionStrategy.OnPush** is applied to improve performance by reducing unnecessary change detection cycles.
 
-## Running unit tests
+### 6. Validation and Error Handling
+- Form validation ensures all required fields are filled before submission.
+- Displays relevant error messages to guide users.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Installation and Setup
+### Prerequisites
+- Node.js & npm
+- Angular CLI installed globally (`npm install -g @angular/cli`)
 
-```bash
-ng test
-```
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/recipe-sharing-app.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd recipe-sharing-app
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Start the mock backend:
+   ```sh
+   json-server --watch db.json --port 3000
+   ```
+5. Run the application:
+   ```sh
+   ng serve
+   ```
+6. Open the application in a browser:
+   ```sh
+   http://localhost:4200/
+   ```
 
-## Running end-to-end tests
+## Future Enhancements
+- Implement user authentication for personalized recipe management.
+- Add real backend integration (e.g., Firebase, Node.js API).
+- Enhance UI with animations and better accessibility features.
 
-For end-to-end (e2e) testing, run:
+## License
+This project is open-source and free to use.
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -18,6 +18,7 @@ export class RecipeAddComponent implements OnInit {
   public imagePreview: string | null = null;
   public recipeId = '';
   public imageNotUploaded = false;
+  private STORAGE_KEY = 'recipe_draft';
   public recipeIngredientsInvalid = false;
   public recipeInstructionsInvalid = false;
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
@@ -135,6 +136,57 @@ export class RecipeAddComponent implements OnInit {
     }
   }
 
+  private saveToLocalStorage(): void {
+    if (!this.recipeId) {
+      const formValue = this.recipeForm.value;
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(formValue));
+    }
+  }
+
+  private loadFromLocalStorage(): void {
+    const savedData = localStorage.getItem(this.STORAGE_KEY);
+    if (savedData) {
+      const formValue = JSON.parse(savedData);
+
+      this.recipeForm.patchValue({
+        recipeTitle: formValue.recipeTitle,
+        recipeDescription: formValue.recipeDescription
+      });
+
+      if (formValue.recipeImage) {
+        this.imagePreview = formValue.recipeImage;
+        this.recipeForm.patchValue({
+          recipeImage: formValue.recipeImage
+        });
+      }
+
+      this.recipeIngredients.clear();
+      formValue.recipeIngredients.forEach((ingredient: any) => {
+        this.recipeIngredients.push(this.fb.group({
+          ingredient: ingredient.ingredient
+        }));
+      });
+
+      this.recipeInstructions.clear();
+      formValue.recipeInstructions.forEach((instruction: any) => {
+        this.recipeInstructions.push(this.fb.group({
+          step: instruction.step
+        }));
+      });
+
+      this.cdr.markForCheck();
+    }
+
+    this.recipeForm.valueChanges.subscribe(() => {
+      this.saveToLocalStorage();
+      this.cdr.markForCheck();
+    });
+  }
+
+  private clearLocalStorage(): void {
+    localStorage.removeItem(this.STORAGE_KEY);
+  }
+
 
   public ngOnInit(): void {
     this.recipeForm = this.fb.group({
@@ -149,6 +201,8 @@ export class RecipeAddComponent implements OnInit {
 
     if(this.recipeId) {
       this.getRecipeByIdAndPatchValue();
+    } else {
+      this.loadFromLocalStorage();
     }
   }
 
@@ -179,6 +233,7 @@ export class RecipeAddComponent implements OnInit {
       } else {
         this.recipeService.addRecipe(formValue).subscribe(() => {
           this.router.navigate(['/recipes'])
+          this.clearLocalStorage();
         })
       }
       this.cdr.markForCheck();

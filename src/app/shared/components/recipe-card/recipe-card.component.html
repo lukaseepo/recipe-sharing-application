@@ -11,7 +11,7 @@
       <h4>{{recipeTitle}}</h4>
     </div>
     <div class="recipe-description">
-      <p>{{recipeDescription}}</p>
+      <p>{{ recipeDescription.length > 68 ? recipeDescription.slice(0, 68) + '...' : recipeDescription}}</p>
     </div>
   </div>
 </div>
