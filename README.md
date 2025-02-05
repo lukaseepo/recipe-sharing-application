@@ -97,12 +97,3 @@ The Recipe Sharing Application is a platform where users can post, view, edit, a
    ```sh
    http://localhost:4200/
    ```
-
-## Future Enhancements
-- Implement user authentication for personalized recipe management.
-- Add real backend integration (e.g., Firebase, Node.js API).
-- Enhance UI with animations and better accessibility features.
-
-## License
-This project is open-source and free to use.
-
