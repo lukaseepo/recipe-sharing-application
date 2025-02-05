@@ -35,7 +35,7 @@ The Recipe Sharing Application is a platform where users can post, view, edit, a
 
 ### 6. Favorites (Bonus Feature)
 - Users can mark recipes as **favorites**.
-- filter their favorite recipes.
+- Filter their favorite recipes.
 
 ## Technical Details
 
@@ -58,7 +58,7 @@ The Recipe Sharing Application is a platform where users can post, view, edit, a
 
 ### 4. UI Frameworks
 - **Angular Material**: Enhances form fields, buttons, and layout.
-- **PrimeNG**: Provides UI components such as tables, dialogs, and notifications.
+- **PrimeNG**: Provides UI components for toast messages and icons.
 
 ### 5. Change Detection Strategy
 - **ChangeDetectionStrategy.OnPush** is applied to improve performance by reducing unnecessary change detection cycles.
@@ -97,12 +97,3 @@ The Recipe Sharing Application is a platform where users can post, view, edit, a
    ```sh
    http://localhost:4200/
    ```
-
-## Future Enhancements
-- Implement user authentication for personalized recipe management.
-- Add real backend integration (e.g., Firebase, Node.js API).
-- Enhance UI with animations and better accessibility features.
-
-## License
-This project is open-source and free to use.
-
