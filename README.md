@@ -58,7 +58,7 @@ The Recipe Sharing Application is a platform where users can post, view, edit, a
 
 ### 4. UI Frameworks
 - **Angular Material**: Enhances form fields, buttons, and layout.
-- **PrimeNG**: Provides UI components such as tables, dialogs, and notifications.
+- **PrimeNG**: Provides UI components for toast messages and icons.
 
 ### 5. Change Detection Strategy
 - **ChangeDetectionStrategy.OnPush** is applied to improve performance by reducing unnecessary change detection cycles.
